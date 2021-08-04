@@ -237,27 +237,27 @@ let DialogRoot = forwardRefWithAs(function Dialog<
   }, [dialogState, hasParentDialog])
 
   // Trigger close when the FocusTrap gets hidden
-  useEffect(() => {
-    if (dialogState !== DialogStates.Open) return
-    if (!internalDialogRef.current) return
+  // useEffect(() => {
+  //   if (dialogState !== DialogStates.Open) return
+  //   if (!internalDialogRef.current) return
 
-    let observer = new IntersectionObserver(entries => {
-      for (let entry of entries) {
-        if (
-          entry.boundingClientRect.x === 0 &&
-          entry.boundingClientRect.y === 0 &&
-          entry.boundingClientRect.width === 0 &&
-          entry.boundingClientRect.height === 0
-        ) {
-          close()
-        }
-      }
-    })
+  //   let observer = new IntersectionObserver(entries => {
+  //     for (let entry of entries) {
+  //       if (
+  //         entry.boundingClientRect.x === 0 &&
+  //         entry.boundingClientRect.y === 0 &&
+  //         entry.boundingClientRect.width === 0 &&
+  //         entry.boundingClientRect.height === 0
+  //       ) {
+  //         close()
+  //       }
+  //     }
+  //   })
 
-    observer.observe(internalDialogRef.current)
+  //   observer.observe(internalDialogRef.current)
 
-    return () => observer.disconnect()
-  }, [dialogState, internalDialogRef, close])
+  //   return () => observer.disconnect()
+  // }, [dialogState, internalDialogRef, close])
 
   let [describedby, DescriptionProvider] = useDescriptions()
 
